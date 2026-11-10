@@ -1,0 +1,13 @@
+package com.ldj;
+
+import org.junit.jupiter.api.Test;
+import org.springframework.boot.test.context.SpringBootTest;
+
+@SpringBootTest
+class FinanceDomainApplicationTests {
+
+    @Test
+    void contextLoads() {
+    }
+
+}

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.ldj.mapper.BayesCategoryStatMapper">
+    <insert id="insertOrUpdate">
+        INSERT INTO bayes_category_stat (category_name, doc_count, total_words)
+        VALUES (#{categoryName}, 1, #{addWords})
+            ON DUPLICATE KEY UPDATE
+             doc_count = doc_count + 1,
+             total_words = total_words + #{addWords}
+    </insert>
+</mapper>

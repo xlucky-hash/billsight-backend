@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.ldj.mapper.BayesWordFreqMapper">
+    <select id="insertOrIncrement">
+        INSERT INTO bayes_word_freq (category_name, word, freq_count) VALUES
+        <foreach collection='uniqueWord' item='words' separator=','>
+        (#{categoryName}, #{words}, 1)
+        </foreach>
+         ON DUPLICATE KEY UPDATE freq_count = freq_count + 1
+    </select>
+</mapper>

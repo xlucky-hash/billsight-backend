@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.ldj.mapper.TxnMapper">
+    <insert id="insert" useGeneratedKeys="true" keyProperty="id">
+        INSERT INTO txn
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            user_id,
+            counterparty_enc,
+            amount,
+            txn_time,
+            category_id,
+            classify_source,
+            confidence,
+            batch_id,
+            direction,
+            status
+        </trim>
+        VALUES
+        <foreach collection="txn" item="item" separator=",">
+            <trim prefix="(" suffix=")" suffixOverrides=",">
+                #{item.userId},
+                #{item.counterpartyEnc},
+                #{item.amount},
+                #{item.txnTime},
+                #{item.categoryId},
+                #{item.classifySource},
+                #{item.confidence},
+                #{item.batchId},
+                #{item.direction},
+                #{item.status},
+            </trim>
+        </foreach>
+    </insert>
+
+    <update id="updateCategoryByTxn">
+
+    </update>
+</mapper>

@@ -1,0 +1,31 @@
+# ============================================================
+# 配置模板：复制为 application-local.yml 后填入真实值
+#   Windows:  copy src\main\resources\application-example.yml src\main\resources\application-local.yml
+#   macOS/Linux: cp src/main/resources/application-example.yml src/main/resources/application-local.yml
+# application-local.yml 已被 .gitignore 排除，不会进入版本库。
+# 所有配置项也支持同名环境变量注入，优先级高于本文件。
+# ============================================================
+
+spring:
+  datasource:
+    # 数据库连接：默认 localhost:3306/match，可按需覆盖
+    # DB_HOST / DB_PORT / DB_NAME / DB_USERNAME / DB_PASSWORD
+    password: "在此填写 MySQL 密码"
+
+llm:
+  # 大模型兜底分类使用的 API Key（OpenAI 兼容协议，默认指向 DeepSeek）
+  # 留空时三级分类的 LLM 兜底能力自动降级，规则与贝叶斯两级不受影响
+  api-key: "在此填写 API Key"
+
+app:
+  storage:
+    local:
+      # 支付详情页截图落盘目录，默认 ./data/bills（相对项目根，已忽略提交）
+      base: "./data/bills"
+
+aliyun:
+  ocr:
+    # 阿里云 OCR 凭证，用于支付详情页截图识别
+    # 留空时 OCR 接口返回未启用提示，其余功能不受影响
+    access-key-id: "在此填写 AccessKeyId"
+    access-key-secret: "在此填写 AccessKeySecret"

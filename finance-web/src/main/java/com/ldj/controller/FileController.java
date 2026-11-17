@@ -22,11 +22,11 @@ public class FileController {
         Integer userId = CurrentHolder.getCurrentUserId();
         String fileName = file.getOriginalFilename();
         String batchId = UUID.randomUUID().toString().replace("-", "").substring(0, 16);
-
+        // 暂时没有写登录接口，所以没有配置拦截器，这里的用户id先固定，后期写好了登录接口配置好拦截器通过ThreadLocal获取当前用户ID
         if (fileName.endsWith(".csv") || fileName.endsWith(".xlsx") || fileName.endsWith(".xls")) {
-            billImportService.processImport(userId, file, batchId);
+            billImportService.processImport(1, file, batchId);
         } else if (fileName.endsWith(".jpg") || fileName.endsWith(".png")) {
-            billImportService.processOcrImport(userId, file, batchId);
+            billImportService.processOcrImport(1, file, batchId);
         } else {
             return Result.error("不支持改类型");
         }
